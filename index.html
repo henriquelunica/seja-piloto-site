@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seja Piloto — Treinamentos, Cursos, Mentorias e Palestras</title>
+  <meta name="description" content="Projeto Seja Piloto — Treinamento e gestão de pessoas para automotivação através de desenvolvimento humano, neurociência, branding e PNL. Para empresas e profissionais.">
+  <meta name="theme-color" content="#0F766E">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Seja Piloto — Desenvolvimento Humano Estratégico">
+  <meta property="og:description" content="Treinamentos, cursos, mentorias, palestras e workshops com base em neurociência, branding e PNL.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'><rect width='100%' height='100%' fill='%230F766E'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' font-family='system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial' font-size='80' fill='white'>Seja Piloto</text></svg>">
+
+  <!-- Favicon (emoji em data URI) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🧭%3C/text%3E%3C/svg%3E">
+
+  <style>
+    /* ======= DESIGN TOKENS (troque as cores aqui quando enviar a logo) ======= */
+    :root{
+      --brand:#0F766E;           /* Acento principal (teal elegante) */
+      --brand-2:#0BA5A4;         /* Acento secundário (opcional)   */
+      --bg:#ffffff;
+      --text:#121417;
+      --muted:#6b7280;
+      --card:#f7f8f9;
+      --border:#e5e7eb;
+      --radius:14px;
+      --shadow:0 10px 30px rgba(2, 6, 23, .08);
+    }
+    /* Dark mode (respeita sistema) + toggle */
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0f12;
+        --text:#e5e7eb;
+        --muted:#9aa3b2;
+        --card:#12161a;
+        --border:#1f2937;
+        --shadow:0 10px 30px rgba(0,0,0,.35);
+      }
+    }
+    [data-theme="dark"]{
+      --bg:#0b0f12; --text:#e5e7eb; --muted:#9aa3b2; --card:#12161a; --border:#1f2937; --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    [data-theme="light"]{
+      --bg:#ffffff; --text:#121417; --muted:#6b7280; --card:#f7f8f9; --border:#e5e7eb; --shadow:0 10px 30px rgba(2, 6, 23, .08);
+    }
+
+    /* ======= BASE ======= */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial,sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.6;
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%; height:auto}
+    .container{width:min(1120px, 92vw); margin-inline:auto}
+    .section{padding:72px 0}
+    .kicker{letter-spacing:.12em; text-transform:uppercase; font-size:.8rem; color:var(--muted)}
+    h1,h2,h3{line-height:1.2; margin:0 0 12px}
+    h2{font-size:clamp(1.6rem, 2.4vw + 1rem, 2.2rem)}
+    p{margin:0 0 10px}
+
+    /* ======= NAV ======= */
+    .nav{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px);
+      background:color-mix(in oklab, var(--bg) 78%, transparent); border-bottom:1px solid var(--border);
+    }
+    .nav .inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+    .brand-mark{
+      width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg, var(--brand), var(--brand-2));
+      display:grid; place-items:center; color:#fff; font-weight:800;
+      box-shadow:var(--shadow);
+    }
+    .brand .title{font-size:1.05rem}
+    .nav ul{display:flex; flex-wrap:wrap; gap:16px; list-style:none; margin:0; padding:0}
+    .nav a.button{
+      background:var(--brand); color:#fff; padding:8px 14px; border-radius:999px; font-weight:600; text-decoration:none;
+      box-shadow:0 6px 20px color-mix(in oklab, var(--brand) 30%, transparent);
+    }
+    .nav a.button:hover{transform:translateY(-1px); text-decoration:none}
+
+    /* ======= HERO ======= */
+    .hero{
+      padding:72px 0 32px; position:relative; overflow:hidden;
+    }
+    .hero .grid{display:grid; gap:28px; grid-template-columns:1.1fr .9fr}
+    @media (max-width:900px){ .hero .grid{grid-template-columns:1fr} }
+    .tagline{font-size:clamp(1.8rem, 3.2vw + .8rem, 2.6rem); font-weight:800; letter-spacing:-.02em}
+    .lead{font-size:1.05rem; color:var(--muted)}
+    .cta-group{display:flex; flex-wrap:wrap; gap:12px; margin-top:18px}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px; font-weight:700; border:1px solid var(--border);
+      background:var(--card); color:var(--text); text-decoration:none;
+    }
+    .btn.primary{background:var(--brand); color:#fff; border-color:transparent}
+    .btn.whatsapp{background:#25D366; color:#053d1d; border-color:transparent}
+    .btn:hover{transform:translateY(-1px)}
+    .hero-visual{
+      border-radius:20px; background:conic-gradient(from 180deg at 50% 50%, color-mix(in oklab, var(--brand) 25%, transparent), color-mix(in oklab, var(--brand-2) 20%, transparent), transparent);
+      min-height:260px; position:relative; overflow:hidden; border:1px solid var(--border);
+    }
+    .hero-visual::after{
+      content:"Seja Piloto"; position:absolute; inset:0; display:grid; place-items:center;
+      font-weight:900; font-size:clamp(2rem, 8vw, 4rem); color:color-mix(in oklab, var(--brand) 22%, var(--text));
+      letter-spacing:-.03em; opacity:.12;
+    }
+
+    /* ======= CARDS & GRIDS ======= */
+    .grid-3{display:grid; gap:20px; grid-template-columns:repeat(3,1fr)}
+    .grid-2{display:grid; gap:20px; grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){ .grid-3{grid-template-columns:1fr 1fr} }
+    @media (max-width:640px){ .grid-3,.grid-2{grid-template-columns:1fr} }
+
+    .card{
+      background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow);
+    }
+    .chip{
+      display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:color-mix(in oklab, var(--card) 70%, transparent);
+      font-size:.78rem; color:var(--muted); margin-right:8px; margin-bottom:6px;
+    }
+
+    /* ======= AVATARS ======= */
+    .avatar{
+      width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg, var(--brand), var(--brand-2)); display:grid; place-items:center; color:#fff; font-weight:800;
+      box-shadow:var(--shadow);
+    }
+    .avatar.sm{width:40px; height:40px; font-size:.9rem}
+
+    /* ======= LISTS ======= */
+    .checklist{list-style:none; padding:0; margin:0}
+    .checklist li{margin:8px 0; padding-left:28px; position:relative}
+    .checklist li::before{
+      content:"✓"; position:absolute; left:0; top:0; color:var(--brand); font-weight:900;
+    }
+
+    /* ======= FOOTER ======= */
+    footer{border-top:1px solid var(--border); padding:36px 0; color:var(--muted); font-size:.95rem}
+
+    /* ======= FLOATING WHATSAPP ======= */
+    .fab{
+      position:fixed; right:18px; bottom:18px; z-index:60; display:inline-flex; align-items:center; gap:10px;
+      background:#25D366; color:#053d1d; padding:12px 16px; border-radius:999px; font-weight:800; box-shadow:var(--shadow); text-decoration:none;
+    }
+
+    /* ======= UTIL ======= */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+    .spaced{margin-top:18px}
+    .thin{max-width:70ch}
+    .divider{height:1px; background:var(--border); margin:24px 0}
+    .topbtn{
+      position:fixed; right:18px; bottom:78px; z-index:50; display:none; background:var(--card); border:1px solid var(--border);
+      padding:10px 12px; border-radius:999px; text-decoration:none; color:var(--text); box-shadow:var(--shadow);
+    }
+    .topbtn.show{display:inline-block}
+    .mode-toggle{
+      border:1px solid var(--border); background:var(--card); border-radius:999px; padding:8px 12px; cursor:pointer; font-weight:600;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav" role="banner">
+    <div class="container inner">
+      <a href="#top" class="brand" aria-label="Início">
+        <div class="brand-mark" aria-hidden="true">SP</div>
+        <div class="title">Seja Piloto</div>
+      </a>
+      <nav aria-label="Principal">
+        <ul>
+          <li><a href="#porque">Por que</a></li>
+          <li><a href="#idealizadores">Idealizadores</a></li>
+          <li><a href="#treinamentos">Treinamentos</a></li>
+          <li><a href="#cursos">Cursos &amp; Mentorias</a></li>
+          <li><a href="#palestras">Palestras &amp; Workshops</a></li>
+          <li><a href="#transformou">Quem já se transformou</a></li>
+          <li><a href="#contato" class="button">Contato</a></li>
+        </ul>
+      </nav>
+      <button class="mode-toggle" id="modeToggle" aria-label="Alternar modo claro/escuro">🌓</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="top">
+    <section class="hero">
+      <div class="container grid">
+        <div>
+          <div class="kicker">Desenvolvimento humano aplicado</div>
+          <h1 class="tagline">Treinamento e gestão de pessoas para <span style="color:var(--brand)">auto-motivação</span> e alta performance.</h1>
+          <p class="lead thin">
+            Projeto <strong>Seja Piloto</strong>: neurociência, branding e PNL para acelerar resultados de empresas e profissionais —
+            sem atalhos milagrosos, com método, prática e transformação real.
+          </p>
+          <div class="cta-group">
+            <a class="btn primary" href="#porque">Por que o Seja Piloto?</a>
+            <a class="btn" href="#cursos">Ver cursos</a>
+            <a class="btn whatsapp" target="_blank" rel="noopener" href="https://wa.me/5531984173214?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20Seja%20Piloto.">Chamar no WhatsApp</a>
+          </div>
+          <p class="spaced muted">Instagram: <a href="https://instagram.com/henriquebarbosahb" target="_blank" rel="noopener">@henriquebarbosahb</a></p>
+        </div>
+        <div class="hero-visual" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- PORQUE -->
+    <section id="porque" class="section">
+      <div class="container">
+        <div class="kicker">Por que Seja Piloto</div>
+        <h2>Você no controle. Pessoas engajadas. Cultura que sustenta performance.</h2>
+        <p class="thin">
+          A maioria dos programas foca apenas em técnicas. Nós começamos pelas pessoas. <strong>Profissional é pessoa antes de ser função</strong>.
+          Combinamos <em>neurociência</em>, <em>branding</em> e <em>PNL</em> para criar rotas práticas de mudança de comportamento,
+          clareza de propósito e disciplina sustentável.
+        </p>
+        <div class="grid-3 spaced">
+          <div class="card">
+            <span class="chip">Neurociência</span>
+            <h3>Aprender a aprender</h3>
+            <p>Protocolos simples para manter o cérebro em alta plasticidade, acelerar a aquisição de habilidades e reter o que importa.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Branding</span>
+            <h3>Marca que move pessoas</h3>
+            <p>Marca é o que fica nas pessoas. Construímos narrativas e experiências que ativam emoções e fidelizam clientes.</p>
+          </div>
+          <div class="card">
+            <span class="chip">PNL</span>
+            <h3>Ferramentas que destravam</h3>
+            <p>Modelos mentais e exercícios para mudar padrões, elevar autoconfiança e traduzir intenção em ação diária.</p>
+          </div>
+        </div>
+        <ul class="checklist spaced thin">
+          <li>Aplicável em equipes e em carreira solo.</li>
+          <li>Foco em autonomia, responsabilidade e consistência.</li>
+          <li>Planos de ação claros e mensuráveis.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- IDEALIZADORES -->
+    <section id="idealizadores" class="section">
+      <div class="container">
+        <div class="kicker">Idealizadores</div>
+        <h2>Quem conduz a jornada</h2>
+        <div class="grid-3 spaced">
+          <div class="card">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+              <div class="avatar" aria-hidden="true">HB</div>
+              <div>
+                <h3 style="margin:0">Henrique Barbosa</h3>
+                <div class="muted">Desenvolvimento Humano & Estratégia</div>
+              </div>
+            </div>
+            <p>Mentor e palestrante focado em disciplina, inteligência emocional e performance. Integra ciência, branding e prática de gestão.</p>
+          </div>
+          <div class="card">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+              <div class="avatar" aria-hidden="true">JS</div>
+              <div>
+                <h3 style="margin:0">Jussara Santiago</h3>
+                <div class="muted">Cultura & Experiência do Cliente</div>
+              </div>
+            </div>
+            <p>Especialista em atendimento e criação de experiências memoráveis. Constrói rotinas que viram cultura.</p>
+          </div>
+          <div class="card">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+              <div class="avatar" aria-hidden="true">NN</div>
+              <div>
+                <h3 style="margin:0">Naiara Nascimento</h3>
+                <div class="muted">Branding & Comunicação</div>
+              </div>
+            </div>
+            <p>Estrategista de marca com foco em posicionamento humano e autêntico, conectando propósito a resultados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TREINAMENTOS (resumo) -->
+    <section id="treinamentos" class="section">
+      <div class="container">
+        <div class="kicker">Treinamentos</div>
+        <h2>Para times que querem consistência e autonomia</h2>
+        <div class="grid-3 spaced">
+          <div class="card">
+            <span class="chip">On-site</span><span class="chip">8–16h</span>
+            <h3>Onboarding de Cultura & Performance</h3>
+            <p>Desenho de rituais, métricas de comportamento e práticas de feedback que sustentam alto padrão de entrega.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Híbrido</span><span class="chip">4–12 semanas</span>
+            <h3>Rotina de Alta Performance</h3>
+            <p>Do planejamento à execução com cadência: foco, priorização, energia e resiliência.</p>
+          </div>
+          <div class="card">
+            <span class="chip">Custom</span>
+            <h3>Academia da Marca</h3>
+            <p>Branding aplicado à operação: experiência do cliente, narrativa e padrões de serviço que geram fãs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURSOS & MENTORIAS (produtos enviados) -->
+    <section id="cursos" class="section">
+      <div class="container">
+        <div class="kicker">Cursos e Mentorias</div>
+        <h2>Formações que mudam comportamento</h2>
+
+        <div class="grid-2 spaced">
+          <div class="card">
+            <span class="chip">8h</span>
+            <h3>“Seja o Melhor do mundo”</h3>
+            <p>Um guia direto para se tornar o melhor profissional possível, começando pelo básico que sustenta tudo: corpo e mente fortes.</p>
+            <p><strong>Os 9 pilares</strong> formam a base para uma evolução construtiva e sustentável.</p>
+          </div>
+
+          <div class="card">
+            <span class="chip">8h</span>
+            <h3>“Seja seu próprio mestre: Aprendendo a aprender”</h3>
+            <p>Depois da escola muita gente para de aprender. Aqui você entende por que o adulto encontra barreiras e descobre <em>seu</em> método ideal para aprender continuamente.</p>
+          </div>
+
+          <div class="card">
+            <span class="chip">Imersão</span>
+            <h3>“Seja mais Inteligente na emoção do que na razão”</h3>
+            <p>Alfabetização emocional para adultos. Entenda como as emoções surgem, mapeie seus padrões e aplique ferramentas para transformar sabotadores em progresso.</p>
+          </div>
+
+          <div class="card">
+            <span class="chip">Branding</span>
+            <h3>“Seja uma marca na sua jornada: O Branding está na sua vida.”</h3>
+            <p>Marca não é logo — é o que fica nas pessoas. Use o branding pessoal para potencializar sua carreira e suas relações.</p>
+          </div>
+
+          <div class="card">
+            <span class="chip">CX</span>
+            <h3>“Seja o Porto Seguro do seu cliente: as pessoas não querem só um cafezinho”</h3>
+            <p>Experiência do cliente com foco nas emoções certas. Diferencie-se, cobre melhor e fidelize com propósito.</p>
+          </div>
+
+          <div class="card">
+            <span class="chip">Autenticidade</span>
+            <h3>“Seja Diferente: A fila de clientes dispostos a pagar por autenticidade”</h3>
+            <p>Saia do “copiar e colar”. Use sua singularidade para atrair clientes certos e transformar atenção em vendas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PALESTRAS & WORKSHOPS -->
+    <section id="palestras" class="section">
+      <div class="container">
+        <div class="kicker">Palestras e Workshops</div>
+        <h2>Conteúdos para eventos e convenções</h2>
+        <div class="grid-3 spaced">
+          <div class="card">
+            <h3>Neurociência da Motivação</h3>
+            <p>Como construir energia, foco e disciplina de forma prática e sustentável.</p>
+          </div>
+          <div class="card">
+            <h3>Inteligência Emocional Aplicada</h3>
+            <p>Mapeamento de gatilhos, autocontrole e comunicação madura em ambientes de alta pressão.</p>
+          </div>
+          <div class="card">
+            <h3>Branding que Vende</h3>
+            <p>Do posicionamento à experiência: como marcas pessoais e corporativas criam valor real.</p>
+          </div>
+          <div class="card">
+            <h3>Aprender a Aprender</h3>
+            <p>Andragogia na prática: ferramentas para equipes que precisam evoluir rápido.</p>
+          </div>
+          <div class="card">
+            <h3>Experiência do Cliente</h3>
+            <p>Roteiros de serviço, rituais e métricas que viram cultura e fidelização.</p>
+          </div>
+          <div class="card">
+            <h3>Cultura & Performance</h3>
+            <p>Como alinhar comportamento, liderança e resultados no dia a dia da operação.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section id="transformou" class="section">
+      <div class="container">
+        <div class="kicker">Quem já se transformou</div>
+        <h2>Depoimentos</h2>
+        <p class="muted thin">Substitua os exemplos abaixo pelos seus clientes quando chegarem os primeiros cases.</p>
+        <div class="grid-3 spaced" id="testimonials">
+          <div class="card">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+              <div class="avatar sm">AC</div>
+              <div>
+                <strong>Ana C.</strong><div class="muted">Gestora Comercial</div>
+              </div>
+            </div>
+            <p>“A virada foi entender meus gatilhos emocionais. O plano de ação foi simples e poderoso.”</p>
+          </div>
+          <div class="card">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+              <div class="avatar sm">RB</div>
+              <div>
+                <strong>Rafael B.</strong><div class="muted">Empreendedor</div>
+              </div>
+            </div>
+            <p>“Branding pessoal na prática. Mudei meu posicionamento e a conversão subiu em 40%.”</p>
+          </div>
+          <div class="card">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+              <div class="avatar sm">LM</div>
+              <div>
+                <strong>Luiza M.</strong><div class="muted">RH</div>
+              </div>
+            </div>
+            <p>“Equipe mais madura e previsível. Menos conflitos, mais resultado.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="section">
+      <div class="container">
+        <div class="kicker">Contato</div>
+        <h2>Fale com a equipe</h2>
+        <div class="grid-2 spaced">
+          <div class="card">
+            <form id="contactForm">
+              <label class="sr-only" for="nome">Nome</label>
+              <input id="nome" name="nome" required placeholder="Seu nome" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:var(--bg); color:var(--text); margin-bottom:10px" />
+
+              <label class="sr-only" for="email">E-mail</label>
+              <input id="email" name="email" type="email" required placeholder="Seu e-mail" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:var(--bg); color:var(--text); margin-bottom:10px" />
+
+              <label class="sr-only" for="fone">Telefone/WhatsApp</label>
+              <input id="fone" name="fone" placeholder="Telefone/WhatsApp" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:var(--bg); color:var(--text); margin-bottom:10px" />
+
+              <label class="sr-only" for="interesse">Interesse</label>
+              <select id="interesse" name="interesse" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:var(--bg); color:var(--text); margin-bottom:10px">
+                <option value="Treinamentos">Treinamentos</option>
+                <option value="Cursos e Mentorias">Cursos e Mentorias</option>
+                <option value="Palestras e Workshops">Palestras e Workshops</option>
+                <option value="Outros">Outros</option>
+              </select>
+
+              <label class="sr-only" for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="5" placeholder="Conte brevemente sua necessidade" style="width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border); background:var(--bg); color:var(--text); margin-bottom:14px"></textarea>
+
+              <div style="display:flex; gap:10px; flex-wrap:wrap">
+                <button type="submit" class="btn primary">Enviar por e-mail</button>
+                <a class="btn whatsapp" id="waBtn" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+              </div>
+              <p class="muted spaced">Ou escreva direto: <a href="mailto:contato@sejapiloto.com.br">contato@sejapiloto.com.br</a> (pode ajustar o e-mail depois).</p>
+            </form>
+          </div>
+          <div class="card">
+            <h3>Informações</h3>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/5531984173214" target="_blank" rel="noopener">+55 31 98417-3214</a></p>
+            <p><strong>Instagram:</strong> <a href="https://instagram.com/henriquebarbosahb" target="_blank" rel="noopener">@henriquebarbosahb</a></p>
+            <div class="divider"></div>
+            <p class="muted">Público-alvo: empresas que desejam treinar times e profissionais que buscam crescimento — com base sólida de <em>desenvolvimento pessoal</em>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container" style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px">
+      <div>&copy; <span id="year"></span> Seja Piloto. Todos os direitos reservados.</div>
+      <div>Feito com propósito — <a href="#top">voltar ao topo</a></div>
+    </div>
+  </footer>
+
+  <!-- Botões flutuantes -->
+  <a href="#top" class="topbtn" id="topBtn" aria-label="Voltar ao topo">↑</a>
+  <a class="fab" href="https://wa.me/5531984173214?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20Seja%20Piloto." target="_blank" rel="noopener" aria-label="Abrir WhatsApp">WhatsApp</a>
+
+  <!-- JSON-LD (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Seja Piloto",
+    "description": "Treinamento e gestão de pessoas para automotivação via desenvolvimento humano, neurociência, branding e PNL.",
+    "telephone": "+55 31 98417-3214",
+    "sameAs": ["https://instagram.com/henriquebarbosahb"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "name":"Cursos e Treinamentos — Seja Piloto",
+    "itemListElement":[
+      {"@type":"Course","name":"Seja o Melhor do mundo","description":"Guia prático com 9 pilares para se tornar o melhor profissional, a partir de corpo e mente fortes.","provider":{"@type":"Organization","name":"Seja Piloto"}},
+      {"@type":"Course","name":"Seja seu próprio mestre: Aprendendo a aprender","description":"Barreiras do adulto para aprender e ferramentas para estudo contínuo.","provider":{"@type":"Organization","name":"Seja Piloto"}},
+      {"@type":"Course","name":"Seja mais Inteligente na emoção do que na razão","description":"Imersão em alfabetização emocional e mudança de padrões.","provider":{"@type":"Organization","name":"Seja Piloto"}},
+      {"@type":"Course","name":"Seja uma marca na sua jornada: O Branding está na sua vida.","description":"Branding pessoal aplicado a carreira e relacionamentos.","provider":{"@type":"Organization","name":"Seja Piloto"}},
+      {"@type":"Course","name":"Seja o Porto Seguro do seu cliente","description":"Experiência do cliente orientada a emoções que fidelizam.","provider":{"@type":"Organization","name":"Seja Piloto"}},
+      {"@type":"Course","name":"Seja Diferente: autenticidade que gera valor","description":"Destaque-se com singularidade e converta atenção em vendas.","provider":{"@type":"Organization","name":"Seja Piloto"}}
+    ]
+  }
+  </script>
+
+  <!-- JS -->
+  <script>
+    // Ano no footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Voltar ao topo visível ao rolar
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+      topBtn.classList.toggle('show', window.scrollY > 600);
+    });
+
+    // Toggle claro/escuro
+    const modeToggle = document.getElementById('modeToggle');
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem('sp-theme');
+    if(savedTheme){ root.setAttribute('data-theme', savedTheme); }
+    modeToggle.addEventListener('click', () => {
+      const now = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', now);
+      localStorage.setItem('sp-theme', now);
+    });
+
+    // Formulário: mailto e WhatsApp com pré-preenchimento
+    const form = document.getElementById('contactForm');
+    const waBtn = document.getElementById('waBtn');
+
+    function buildMessage(){
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const fone = document.getElementById('fone').value.trim();
+      const interesse = document.getElementById('interesse').value;
+      const msg = document.getElementById('mensagem').value.trim();
+      const linhas = [
+        `Olá, equipe Seja Piloto!`,
+        ``,
+        `Nome: ${nome || "-"}`,
+        `E-mail: ${email || "-"}`,
+        `Telefone/WhatsApp: ${fone || "-"}`,
+        `Interesse: ${interesse || "-"}`,
+        ``,
+        `Mensagem:`,
+        `${msg || "-"}`,
+        ``,
+        `— Enviado pelo site`
+      ];
+      return linhas.join('\n');
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const assunto = encodeURIComponent('Contato — Seja Piloto');
+      const corpo = encodeURIComponent(buildMessage());
+      // Ajuste o e-mail aqui quando tiver o oficial:
+      const mail = 'contato@sejapiloto.com.br';
+      window.location.href = `mailto:${mail}?subject=${assunto}&body=${corpo}`;
+    });
+
+    waBtn.addEventListener('click', (e) => {
+      const texto = encodeURIComponent(buildMessage());
+      const fone = '5531984173214';
+      waBtn.href = `https://wa.me/${fone}?text=${texto}`;
+    });
+  </script>
+</body>
+</html>
