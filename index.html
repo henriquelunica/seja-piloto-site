@@ -4,26 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Seja Piloto</title>
-  <meta name="description" content="Seja Piloto — Treinamentos de 8h, cursos, mentorias, palestras e workshops para times e profissionais, com base em neurociência, branding e PNL. Inteligência emocional, performance e experiência do cliente.">
-  <meta name="theme-color" content="#707C72">
+  <meta name="description" content="Treinamentos de 8h, cursos, mentorias, palestras e workshops para empresas e profissionais. Neurociência, branding e PNL aplicados à inteligência emocional, performance e experiência do cliente.">
+  <meta name="theme-color" content="#707E74">
+
+  <!-- Canonical + domínio -->
+  <link rel="canonical" href="https://www.assumaadirecao.com.br/">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Seja Piloto — Desenvolvimento Humano que vira Resultado">
-  <meta property="og:description" content="Treinamentos e cursos de 8h focados em inteligência emocional, aprender a aprender, autenticidade, branding pessoal e experiência do cliente.">
+  <meta property="og:description" content="Programas práticos de 8h: inteligência emocional, aprender a aprender, autenticidade, branding pessoal e experiência do cliente.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <!-- usa a própria logo como OG -->
-  <meta property="og:image" content="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gA..."> <!-- encurtado intencionalmente pelo navegador -->
+  <meta property="og:url" content="https://www.assumaadirecao.com.br/">
+  <!-- usa uma imagem OG simples (gerar depois se quiser): -->
+  <meta property="og:image" content="https://www.assumaadirecao.com.br/favicon.png">
 
-  <!-- Favicon (gerado da sua logo) -->
-  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAAtCAYAAAB..."> <!-- encurtado intencionalmente -->
+  <!-- Favicon e ícone -->
+  <link rel="icon" type="image/png" href="favicon.png" sizes="any">
+  <link rel="apple-touch-icon" href="favicon.png">
 
   <style>
     /* ===== TOKENS (extraídos da logo) ===== */
     :root{
-      --brand:#B3BAB4;   /* verde acinzentado principal */
-      --brand-2:#707C72; /* tom mais escuro para contrastes/ações */
-      --accent:#CFD3D0;  /* tom claro para realces sutis */
+      --brand:#B4BCB6;   /* verde acinzentado principal */
+      --brand-2:#707E74; /* tom mais escuro para botões/contraste */
+      --accent:#D1D5D2;  /* realce claro */
       --bg:#ffffff; --text:#111418; --muted:#626A73; --card:#F6F7F8; --border:#E6E8EA; --radius:14px; --shadow:0 10px 30px rgba(2,6,23,.08);
     }
     @media (prefers-color-scheme: dark){
@@ -46,11 +51,11 @@
     h2{font-size:clamp(1.6rem,2.4vw + 1rem,2.2rem)}
     p{margin:0 0 10px}
 
-    /* ===== NAV melhor para iPhone ===== */
+    /* ===== NAV otimizada p/ iPhone ===== */
     .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px); background:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid var(--border)}
     .nav .inner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0}
     .brand{display:flex; align-items:center; gap:10px; font-weight:700; min-width:0}
-    .brand-logo{height:30px; display:block}
+    .brand-logo{height:32px; display:block}
     .nav-scroll{display:flex; gap:12px; overflow:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none}
     .nav-scroll::-webkit-scrollbar{display:none}
     .nav-scroll a{white-space:nowrap; padding:6px 10px; border-radius:10px}
@@ -101,7 +106,7 @@
   <header class="nav" role="banner">
     <div class="container inner">
       <a href="#top" class="brand" aria-label="Início">
-        <img class="brand-logo" alt="Seja Piloto" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gA..."/> <!-- logo embutida (encurtada pelo navegador) -->
+        <img class="brand-logo" alt="Seja Piloto" src="logo_web.png" />
       </a>
       <nav aria-label="Principal" class="nav-scroll">
         <a href="#porque">Por que</a>
@@ -218,7 +223,7 @@
           <div class="card">
             <span class="chip">8h</span>
             <h3>Seja seu Próprio Mestre: Aprendendo a Aprender</h3>
-            <p>Adultos enfrentam barreiras para aprender porque mudam os contextos, não a biologia. Você vai entender **como a memória e a atenção funcionam**, identificar seu estilo de estudo, desenhar rotinas realistas e aplicar técnicas (spaced repetition, interleaving, registro ativo) sem complicação.</p>
+            <p>Adultos enfrentam barreiras para aprender porque mudam os contextos, não a biologia. Você vai entender <strong>como a memória e a atenção funcionam</strong>, identificar seu estilo de estudo, desenhar rotinas realistas e aplicar técnicas (spaced repetition, interleaving, registro ativo) sem complicação.</p>
             <p class="spaced"><a class="btn primary" target="_blank" rel="noopener" href="https://wa.me/5531982389853?text=Ol%C3%A1%2C%20estou%20no%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20curso%20Seja%20seu%20Pr%C3%B3prio%20Mestre.">Quero saber mais</a></p>
           </div>
           <!-- 3 -->
@@ -258,9 +263,9 @@
       <div class="container">
         <div class="kicker">Palestras e Workshops</div>
         <h2>Formatos para eventos — e conteúdo sob medida</h2>
-        <p class="thin">Temos conteúdos prontos e também **adaptamos** para sua realidade, sempre alinhados à nossa visão, missão e valores.</p>
+        <p class="thin">Temos conteúdos prontos e também <strong>adaptamos</strong> para sua realidade, sempre alinhados à nossa visão, missão e valores.</p>
         <div class="grid-3 spaced">
-          <div class="card"><h3>Neurociência da Motivação</h3><p>Energia, foco e disciplina sem truques — só biologia aplicada ao dia a dia.</p></div>
+          <div class="card"><h3>Neurociência da Motivação</h3><p>Energia, foco e disciplina sem truques — biologia aplicada ao dia a dia.</p></div>
           <div class="card"><h3>Inteligência Emocional Aplicada</h3><p>Autorregulação, comunicação madura e prevenção de conflitos.</p></div>
           <div class="card"><h3>Branding que Vende</h3><p>Do posicionamento à experiência: marca pessoal e corporativa que gera valor.</p></div>
           <div class="card"><h3>Aprender a Aprender</h3><p>Andragogia, técnicas e rotina de estudo para equipes que evoluem rápido.</p></div>
@@ -333,8 +338,7 @@
             <h3>Informações</h3>
             <p><strong>WhatsApp:</strong> <a href="https://wa.me/5531982389853" target="_blank" rel="noopener">+55 31 98238-9853</a></p>
             <p><strong>Instagram:</strong> <a href="https://instagram.com/henriquebarbosahb" target="_blank" rel="noopener">@henriquebarbosahb</a></p>
-            <p><strong>Domínio solicitado:</strong> <span class="muted">www.assumaadirecao.com.br</span></p>
-            <div class="spaced muted">Assim que o domínio estiver ativo, configuramos para abrir este site.</div>
+            <p><strong>Domínio:</strong> <a href="https://www.assumaadirecao.com.br/" target="_blank" rel="noopener">www.assumaadirecao.com.br</a></p>
           </div>
         </div>
       </div>
@@ -353,12 +357,11 @@
   <a href="#top" class="topbtn" id="topBtn" aria-label="Voltar ao topo">↑</a>
   <a class="fab" href="https://wa.me/5531982389853?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20Seja%20Piloto." target="_blank" rel="noopener" aria-label="Abrir WhatsApp">WhatsApp</a>
 
-  <!-- JSON-LD -->
+  <!-- SEO estruturado -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"Seja Piloto","url":"https://assumaadirecao.com.br","description":"Treinamentos, cursos, mentorias, palestras e workshops com base em neurociência, branding e PNL.","telephone":"+55 31 98238-9853","sameAs":["https://instagram.com/henriquebarbosahb"]}
+  {"@context":"https://schema.org","@type":"Organization","name":"Seja Piloto","url":"https://www.assumaadirecao.com.br/","description":"Treinamentos, cursos, mentorias, palestras e workshops com base em neurociência, branding e PNL.","telephone":"+55 31 98238-9853","sameAs":["https://instagram.com/henriquebarbosahb"]}
   </script>
 
-  <!-- JS -->
   <script>
     // Ano no footer
     document.getElementById('year').textContent = new Date().getFullYear();
